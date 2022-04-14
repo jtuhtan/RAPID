@@ -16,7 +16,7 @@ Download an example file and run from MATLAB:
     [dataOut, xq, RMSE] = interpolateRegFcn(dataIn, nOut, interpMethod)
 
 ## Acknowledgements
-We are greatful for the funding received to support the the creation, development and updates of this unique code repository:
+We are greatful for the funding received to support the the creation, development and updates of this unique Open Science code and data repository:
 
 -> EU H2020: FITHydro - Fishfriendly Innovative Technologies for Hydropower (https://www.fithydro.eu/)
 
