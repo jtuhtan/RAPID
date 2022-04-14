@@ -5,6 +5,9 @@ Current code supports three types of sensors: RAPID, EU FITHydro Barotrauma Dete
 
 MATLAB 2022a
 
+![IMG_2792](https://user-images.githubusercontent.com/460746/163398941-038b1212-2b05-45d2-90d9-0c6841af77a3.jpg)
+
+
 ## Examples
 
 Several examples are provided in the `data/` folder to run the RAPID scripts, located in the `examples/` folder.
