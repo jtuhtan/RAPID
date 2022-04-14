@@ -2,8 +2,13 @@
 % Copyright 2022 Tallinn University of Technology
 % Jeffrey A. Tuhtan jetuht@ttu.ee
 
-clear all
-close all
+%%
+% This script will import a single RAPID sensor binary file in the user-defined folder "filePath" and file "fileName" in 
+% the SETTINGS FOR IMPORT SCRIPT section below.
+% It will convert the binary data into a MATLAB .mat file, human readable .csv file, and export a diagnostic plot showing the acceleration magnitude
+% and pressure time series as a .pdf file with the same name as the "fileName". New subfolders named MAT, CSV and PDF will be created in the "filePath"
+% defined by the user.
+%%
 
 %% SETTINGS FOR IMPORT SCRIPT
 fs = 2048; % sample rate in Hz
