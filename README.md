@@ -1,5 +1,7 @@
 # RAPID
-Data pre- and post-processing scripts for RAPID (Robust Autonomous Pressure and Inertial Devices) data.
+Sensor data pre- and post-processing scripts from RAPID (Robust Autonomous Pressure and Inertial Devices).
+
+Current code supports RAPID, EU FITHydro Barotrauma Detection System (BDS) sensors and fish backpacks for the reduction of live fish testing through science and technology (RETERO). 
 
 MATLAB 2022a
 
