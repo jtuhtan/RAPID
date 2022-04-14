@@ -5,8 +5,7 @@ Current code supports three types of sensors: RAPID, EU FITHydro Barotrauma Dete
 
 MATLAB 2022a
 
-![IMG_2792](https://user-images.githubusercontent.com/460746/163398941-038b1212-2b05-45d2-90d9-0c6841af77a3.jpg)
-
+![EDF_OFB](https://user-images.githubusercontent.com/460746/163399316-5f4cba75-5c80-47d2-96d9-b1fc5f33d51a.jpg)
 
 ## Examples
 
