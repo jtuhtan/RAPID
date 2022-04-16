@@ -1,10 +1,40 @@
-% interpolateRegFcn - function version to process lots of data!
-
-% Takes a univariate data set, dataIn of length, nIn and interpolates it uniformly to a data set, dataOut of length nOut
-% Copyright 2022 Tallinn University of Technology
-% Assoc. Prof. Jeffrey A. Tuhtan jetuht@ttu.ee
-
 function [dataOut, xq, RMSE] = interpolateRegFcn(dataIn, nOut, interpMethod)
+
+% FORMAT: [DATAOUT, XQ, RMSE] = INTERPOLATEREGFCN(DATAIN, NOUT, INTERPMETHOD)
+%   
+%   Interpolate values to a fixed number of intervals (0 to 1)  
+%
+%   This function takes a univariate data set and interpolates it uniformly
+%   to an output data set with fixed length.
+%
+%   INTERPOLATEREGFCN(DATAIN, NOUT, INTERPMETHOD) interpolates a 1D vector
+%   of continuous data, DATAIN to a fixed number of entries, NOUT (default = 100) using one
+%   of the methods defined by INTERPMETHOD (default = 'linear').
+%
+%   [DATAOUT, XQ, RMSE] returns the interpolated 1D vector, DATAOUT in
+%   equally spaced intervals, XQ over the range [0, 1]. The root mean
+%   square error, RMSE is calculated for the closest matching range values
+%   between DATAIN and DATAOUT and can be used to estimate the
+%   interpolation error.
+% -------------------------------------------------------------------------
+%    author:      Jeffrey A. Tuhtan
+%    affiliation: Dept. of Computer Systems, Tallinn University of Technology, Estonia
+%    email:      jeffrey.tuhtan@taltech.ee
+%    
+%    $Revision: 1.1 $ $Date: 2022/04/16 14:35:00 $
+
+if isempty(dataIn)
+	dataOut = NaN;
+	return
+end
+
+if nargin < 2
+    nOut = 100; % default value of nOut
+end
+
+if nargin < 3
+    interpMethod = 'linear'; % default value of interpMethod
+end
 
     %% STEP 1: ALGORITHM INTERPOLATES dataIn TO A NEW DATA SET, "dataOut" WITH UNIFORM LENGTH, "nOut"
     nIn = size(dataIn,2); % get the size nIn of the input data set
