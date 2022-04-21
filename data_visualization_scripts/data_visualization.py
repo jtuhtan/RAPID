@@ -22,19 +22,20 @@ acc_gain = 10
 fs       = 2048 #sample rate in Hz
 
 os.chdir(r'C:\Users\Vanessa\workspaces') #directory .txt files
-files = glob.glob('*.txt')
+files = glob.glob('*.txt') #take only txt files
 
+# Read each 11 bytes (length of each line of the file) 
 def read_row(mm, length):
 	count = 0
 	while True:
 		count += 1
-		row = mm.read(length) #read 11 bytes
-		if not len(row) == length: #validate corrupted bytes
+		row = mm.read(length) 
+		if not len(row) == length: 
 			break 
 		yield row
 
-
-def unpacking(row): #Unpack raw data
+# Get raw data and unpack bytes in big-endian format
+def unpacking(row): 
 	list_values = []
 	index = unpack('>h', bytes(row[0:2]))[0]
 	index = index - 1
@@ -55,6 +56,7 @@ def unpacking(row): #Unpack raw data
 	list_values.append(amag)
 	return list_values
 
+# Open file, map bytes, and get the results of unpacked bytes 
 def get_results(filename, length):
 	with open(filename,'rb') as file:
 		mm = mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ)
@@ -63,21 +65,21 @@ def get_results(filename, length):
 			]
 	return results
 		
-# Export plot to PDF
+# Create CSV file
 def create_csv(filename, results):
-	# Export results to CSV
 	with open(f'{os.path.splitext(filename)[0]}.csv', 'w+', newline='') as file:
 		writer = csv.writer(file)
 		writer.writerow(["Index","P [mbar]","AX [m/s2]","AY [m/s2]","AZ [m/s2]","AMag [m/s2]"])
 		for x in results:
 			writer.writerow([x[0],x[4],x[1],x[2],x[3],x[5]])
-
+# Create plot
 def create_plot(filename, results, fs):
 	x_axis  = []
 	y_left  = []
 	y_right = []
 
-	for x in results:
+	# Add the results to the axes lists 
+	for x in results: 
 		xaxis = x[0] / fs
 		x_axis.append(xaxis)
 		yleft = x[5]
@@ -112,9 +114,9 @@ def create_plot(filename, results, fs):
 	fig.update_yaxes(title_text="<b>Total Pressure </b> (mbar)", secondary_y=True)
 
 	fig.show()
-	#fig.write_image("fig1.pdf")
+	#fig.write_image(f'{os.path.splitext(filename)[0]}.pdf')
 
-
+# Export results to CSV and PDF
 for x in files:
 	filename = x
 	create_csv(filename, get_results(filename, length))
