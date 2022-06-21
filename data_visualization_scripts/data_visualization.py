@@ -21,7 +21,7 @@ p_gain   = 10
 acc_gain = 10
 fs       = 2048 #sample rate in Hz
 
-os.chdir(r'/home/iring/Projects/RAPID') #directory .txt files
+# os.chdir(r'/local_directory') #directory .txt files
 files = glob.glob('*.txt') #take only txt files
 
 # Read each 11 bytes (length of each line of the file) 
