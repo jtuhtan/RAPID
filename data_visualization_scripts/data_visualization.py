@@ -21,7 +21,7 @@ p_gain   = 10
 acc_gain = 10
 fs       = 2048 #sample rate in Hz
 
-os.chdir(r'C:\Users\Vanessa\workspaces') #directory .txt files
+os.chdir(r'/home/iring/Projects/RAPID') #directory .txt files
 files = glob.glob('*.txt') #take only txt files
 
 # Read each 11 bytes (length of each line of the file) 
@@ -69,9 +69,9 @@ def get_results(filename, length):
 def create_csv(filename, results):
 	with open(f'{os.path.splitext(filename)[0]}.csv', 'w+', newline='') as file:
 		writer = csv.writer(file)
-		writer.writerow(["Index","P [mbar]","AX [m/s2]","AY [m/s2]","AZ [m/s2]","AMag [m/s2]"])
-		for x in results:
-			writer.writerow([x[0],x[4],x[1],x[2],x[3],x[5]])
+		writer.writerow(["Index","Time [s]","P [mbar]","AX [m/s2]","AY [m/s2]","AZ [m/s2]","AMag [m/s2]"])
+		for ind, val in enumerate(results):
+			writer.writerow([ind,ind/fs,val[4],val[1],val[2],val[3],val[5]])
 # Create plot
 def create_plot(filename, results, fs):
 	x_axis  = []
@@ -79,12 +79,12 @@ def create_plot(filename, results, fs):
 	y_right = []
 
 	# Add the results to the axes lists 
-	for x in results: 
-		xaxis = x[0] / fs
+	for ind, val in enumerate(results): 
+		xaxis = ind / fs
 		x_axis.append(xaxis)
-		yleft = x[5]
+		yleft = val[5]
 		y_left.append(yleft)
-		yright = x[4]
+		yright = val[4]
 		y_right.append(yright)	
 
 	# Create figure with secondary y-axis
