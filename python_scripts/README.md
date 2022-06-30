@@ -2,7 +2,9 @@
 
 ## Purpose
 
-This collection of scripts processes the data generated during strike events by the BDS sensors developed by the workgroup of Environmental Sensing at Taltech, Tallinn. The BDS log data at a rate of 100 or 250 Hz.  
+This collection of scripts processes the data generated during strike events by the BDS sensors developed by the workgroup of Environmental Sensing at TalTech, Estonia. 
+
+The BDS log pressure, acceleration, rate gyro and magnetometer data at a rate of either 100 Hz or 250 Hz.  
 
 BDS User Guide: https://biorobotics.pages.taltech.ee/bds/en/
 
