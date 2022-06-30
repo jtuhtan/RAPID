@@ -1,4 +1,4 @@
-# Data Processing for Strike Experiments on the BDS Sensor Probe
+# Data Processing for Strike Experiments on BDS Sensors
 
 ## Purpose
 
