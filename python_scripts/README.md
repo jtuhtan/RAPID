@@ -2,13 +2,21 @@
 
 ## Purpose
 
-This collection of scripts processes the data generated during strike events by the BDS sensors developed by the workgroup of Environmental Sensing at Taltech, Tallinn. As the sensor is only recording at 100 or 250 Hz, it is unable to pick up the actual impact. Yet the dissipation of the kinetic energy transferred into the probe will take a lot longer. The hypothesis is, that the sensor will be able to pick this up as a decreasing amount of movement of the sensor probe. The goal is to use this energy dissipation profile as a means to infer information about the impact. most importantly the strike velocity.
+This collection of scripts processes the data generated during strike events by the BDS sensors developed by the workgroup of Environmental Sensing at Taltech, Tallinn. The BDS log data at a rate of 100 or 250 Hz.  
+
+BDS User Guide: https://biorobotics.pages.taltech.ee/bds/en/
+
+During impact events, kinetic energy is transferred to the probe from the contact surface (e.g. blade, wall). The scripts below can be used to:
+
+1) Convert the binary BDS data files into CSV format.
+
+2) Calculate the linear and rotational kinetic energy budgets for future use to characterize impact events.
 
 ## Usage
 
 ### importData.py
 
-1. Place the raw data file from the BDS probe within the project folder. Despite the name, it is not a text file but rather a bytecode file. You will not be able to open it with an editor
+1. Place the raw data file from the BDS probe within the project folder. The BDS raw sensor data files are binary.
 2. Open the script `importData.py` and change the filename at the bottom according to your filename and relative file location between your data file and the script
 3. **Change the class to your measurement and sensor**: When processing data from a BDS probe at 250 Hz, use the class `BDS250`. For BDS at 100 Hz `BDS100` and for the EDF Sensor `EDF`
 4. Run the script. The processed data, a csv file, will be put in the folder `./csv` in the project directory
