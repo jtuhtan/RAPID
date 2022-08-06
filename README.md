@@ -3,6 +3,14 @@ Sensor data post-processing scripts from RAPID (Robust Autonomous Pressure and I
 
 Current code supports three types of sensors: RAPID, EU FITHydro Barotrauma Detection System (BDS) and fish backpacks for the reduction of live fish testing through science and technology (RETERO).
 
+This repository includes open-source code, tutorials and example data for sensor data post-processing. The user guides for the sensor hardware are located here:
+
+BDS -> https://biorobotics.pages.taltech.ee/bds/en/
+
+Fish Backpacks -> https://biorobotics.pages.taltech.ee/backpack/en/
+
+RAPID -> https://biorobotics.pages.taltech.ee/edf/en/
+
 # Programming languages used in this repository
 MATLAB 2022a, Python 3.10
 
