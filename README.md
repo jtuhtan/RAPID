@@ -1,4 +1,4 @@
-# RAPID Code Repository, Tutorials and Example Data
+# BDS, Fish Backpacks and RAPID Code Repository, Tutorials and Example Data
 Sensor data post-processing scripts from RAPID (Robust Autonomous Pressure and Inertial Devices).
 
 Current code supports three types of sensors: RAPID, EU FITHydro Barotrauma Detection System (BDS) and fish backpacks for the reduction of live fish testing through science and technology (RETERO).
