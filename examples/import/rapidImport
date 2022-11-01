@@ -13,7 +13,7 @@
 %% SETTINGS FOR IMPORT SCRIPT
 fs = 2048; % sample rate in Hz
 % Gain for each type of sensor
-acc_gain = 10; % accelerometer gain
+acc_gain = 1; % accelerometer gain (Updated from 10.0 on 2022.11.01)
 p_gain = 10; % pressure sensor gain
 filePath = 'C:\Users\Admin\OneDrive - TalTech\MATLAB\EDF\RAPID_Git\RAPID\200g_Vertical\';
 fileName = 'A020401141434.txt'; % full file path including the file name to import and convert from binary
@@ -91,37 +91,7 @@ counterCheck = ARaw(fs:fs:size(ARaw,1));
 counterFindBadTiming = counterCheck(counterCheck<fs & counterCheck>fs); % look for time stamps which do not match the sampling rate
 %%
 
-%% STEP 2: Retrieve even / odd data for accelerometer offset
-B = double(BRaw);
-C = double(CRaw);
-D = double(DRaw);
-
-Bodd = B(1:2:end-1);
-Beven = B(2:2:end);
-
-BoddMean = mean(Bodd);
-BevenMean = mean(Beven);
-
-Codd = C(1:2:end-1);
-Ceven = C(2:2:end);
-
-CoddMean = mean(Codd);
-CevenMean = mean(Ceven);
-
-Dodd = D(1:2:end-1);
-Deven = D(2:2:end);
-
-DoddMean = mean(Dodd);
-DevenMean = mean(Deven);
-
-accelOffsets(1,:) = [BoddMean, BevenMean]./10;
-accelOffsets(2,:) = [CoddMean, CevenMean]./10;
-accelOffsets(3,:) = [DoddMean, DevenMean]./10;
-
-batchAccelOffsets = accelOffsets;
-%%
-
-%% STEP 3: Convert to float including gain
+%% STEP 2: Convert to float including gain
 rapid.tr = ARaw;
 rapid.ax = B ./ acc_gain;
 rapid.ay = C ./ acc_gain;
@@ -139,7 +109,7 @@ rapid.offsets = accelOffsets;
 %%
 
 %% STEP 4: Export as csv text file for reporting / sharing raw data
-cHeader = {'Time [Count, 2048 Hz]','P [mbar]','AX [g]','AY [g]','AZ [g]','AMag [g]'}; % header
+cHeader = {'Time [Count, 2048 Hz]','P [mbar]','AX [m/s2]','AY [m/s2]','AZ [m/s2]','AMag [m/s2]'}; % header
 
 commaHeader = [cHeader;repmat({','},1,numel(cHeader))]; % insert commas
 commaHeader = commaHeader(:)';
@@ -178,7 +148,7 @@ amagMean = mean(rapid.amag);
 figure(1)
 subplot(2,1,1)
 plot(rapid.count./fs,rapid.amag,'-r');
-ylabel('Acceleration Magnitude (g)')
+ylabel('Acceleration Magnitude (m/s^2)')
 grid on
 xlim([0 tsMax]);
 title(fileName);
