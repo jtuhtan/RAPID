@@ -15,8 +15,8 @@ fs = 2048; % sample rate in Hz
 % Gain for each type of sensor
 acc_gain = 1; % accelerometer gain (Updated from 10.0 on 2022.11.01)
 p_gain = 10; % pressure sensor gain
-filePath = 'C:\Users\Admin\OneDrive - TalTech\MATLAB\EDF\RAPID_Git\RAPID\200g_Vertical\';
-fileName = 'A020401141434.txt'; % full file path including the file name to import and convert from binary
+filePath = 'C:\Users\Admin\OneDrive - TalTech\Projects\2022_RETERO_2\Strike_Tests\2022.07.28_EDF\2022.10.20_Cloud_Download\2022.07.28_Strike_Data\1.0 ms-1 to 9.0 ms-1 2x Strikes Each\1 ms-1\';
+fileName = 'T040728161904.txt'; % full file path including the file name to import and convert from binary
 fileFull = strcat(filePath,fileName);
 %%
 
@@ -92,6 +92,10 @@ counterFindBadTiming = counterCheck(counterCheck<fs & counterCheck>fs); % look f
 %%
 
 %% STEP 2: Convert to float including gain
+B = double(BRaw);
+C = double(CRaw);
+D = double(DRaw);
+
 rapid.tr = ARaw;
 rapid.ax = B ./ acc_gain;
 rapid.ay = C ./ acc_gain;
@@ -100,7 +104,6 @@ rapid.amag = sqrt(rapid.ax.^2 + rapid.ay.^2 + rapid.az.^2);
 
 rapid.p = (double(ERaw))/p_gain;
 rapid.count = (0:1:size(rapid.tr,1)-1)';
-rapid.offsets = accelOffsets;
 %%
 
 %% Export results to MAT folder with MAT binary format
