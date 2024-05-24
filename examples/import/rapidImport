@@ -2,6 +2,9 @@
 % Copyright 2022 Tallinn University of Technology
 % Jeffrey A. Tuhtan jetuht@ttu.ee
 
+% NOTE: This code is only for RAPID V1 sensors!
+% If your sensor generates separate HIG and IMP files, this code will not convert your files. Please use rapid_import_HIG_V3.m and rapid_import_IMP_V3.m
+
 %%
 % This script will import a single RAPID sensor binary file in the user-defined folder "filePath" and file "fileName" in 
 % the SETTINGS FOR IMPORT SCRIPT section below.
