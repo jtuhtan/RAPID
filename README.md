@@ -1,4 +1,4 @@
-# BDS, Fish Backpacks and RAPID Code Repository, Tutorials and Example Data
+# Code Repository and Example Data for BDS, RAPID and Fish Backpack Sensors
 Current code supports three types of sensors: Robust Autonomous Pressure and Inertial Devices (RAPID), EU H2020 FITHydro Barotrauma Detection System (BDS) and Fish Backpacks for the reduction of live fish testing through science and technology (RETERO).
 
 This repository includes open-source code, tutorials and example data for sensor data post-processing. The user guides for the sensor hardware are located here:
