@@ -1,7 +1,7 @@
-% RAPIDHIG_import_HIG - Read binary file from dual digital accelerometer proto
+% rapid_import_HIG_V3 - Read binary file from high-g digital accelerometer
 % Copyright 2024 Tallinn University of Technology
 % Jeffrey A. Tuhtan jetuht@ttu.ee
-% Last updated: 2024.05.24
+% Last updated: 2024.06.10
 
 % Dependencies: sort_nat.m
 % https://www.mathworks.com/matlabcentral/fileexchange/10959-sort_nat-natural-order-sort
@@ -13,7 +13,7 @@
 % 
 % This script then opens each binary file (STEP 1), and converts each of
 % the three accelerometer axes into a float and applies the gain (STEP 2)
-% converting the raw data to units of g. The data are then saved in boty
+% converting the raw data to units of g. The data are then saved in both
 % MAT binary file (STEP 3) as well as CSV (STEP 4). Finally, a plot is
 % created which shows the time series of each of the three axes as well as
 % the magnitude (STEP 5).
@@ -104,21 +104,22 @@ RAPIDHIG.ts = RAPIDHIG.tid ./ fs; % time stamp in seconds
 RAPIDHIG.ax = double(AccRaw(:,1)) ./ gain_hg;
 RAPIDHIG.ay = double(AccRaw(:,2)) ./ gain_hg;
 RAPIDHIG.az = double(AccRaw(:,3)) ./ gain_hg;
-RAPIDHIG.am = (RAPIDHIG.ax.^2 + RAPIDHIG.ay.^2 + RAPIDHIG.az.^2).^0.5; % acceleration magnitude
+RAPIDHIG.am = round((RAPIDHIG.ax.^2 + RAPIDHIG.ay.^2 + RAPIDHIG.az.^2).^0.5,1); % acceleration magnitude
 
-medianHIG(itFile,1) = median(RAPIDHIG.ax)
-medianHIG(itFile,2) = median(RAPIDHIG.ay)
-medianHIG(itFile,3) = median(RAPIDHIG.az)
+medianHIG(itFile,1) = median(RAPIDHIG.ax);
+medianHIG(itFile,2) = median(RAPIDHIG.ay);
+medianHIG(itFile,3) = median(RAPIDHIG.az);
 
-meanHIG(itFile,1) = mean(RAPIDHIG.ax)
-meanHIG(itFile,2) = mean(RAPIDHIG.ay)
-meanHIG(itFile,3) = mean(RAPIDHIG.az)
+meanHIG(itFile,1) = mean(RAPIDHIG.ax);
+meanHIG(itFile,2) = mean(RAPIDHIG.ay);
+meanHIG(itFile,3) = mean(RAPIDHIG.az);
 
 % Create array with CSV data for exporting
 dataExportCSV(:,1) = RAPIDHIG.ts;
 dataExportCSV(:,2) = RAPIDHIG.ax;
 dataExportCSV(:,3) = RAPIDHIG.ay;
 dataExportCSV(:,4) = RAPIDHIG.az;
+dataExportCSV(:,5) = RAPIDHIG.am;
 %%
 
 %% STEP 3: Export results to MAT folder with MAT binary format
@@ -128,7 +129,7 @@ save(dataExportMAT,'RAPIDHIG');
 
 %% STEP 4: Export results to CSV folder with CSV text format
 % Create the header text
-cHeader = {'Time (s)','Accel_X (g)','Accel_Y (g)','Accel_Z (g)'}; 
+cHeader = {'Time (s)','HIGAccel_X (g)','HIGAccel_Y (g)','HIGAccel_Z (g)','HIGAccel_Mag (g)'}; 
 
 commaHeader = [cHeader;repmat({','},1,numel(cHeader))]; % Insert commas
 commaHeader = commaHeader(:)';
@@ -138,8 +139,8 @@ textHeader = textHeader(1:end-1);
 % Write header to file
 exportFile = strcat(filePathCSV,fileNameNoExt,'-HIG.csv');
 fid = fopen(exportFile,'wt'); 
-fprintf(fid,'%s\n',textHeader)
-fclose(fid)
+fprintf(fid,'%s\n',textHeader);
+fclose(fid);
 
 % Write HIG sensor data to CSV
 dlmwrite(exportFile,dataExportCSV,'-append');
@@ -157,5 +158,4 @@ ylabel('Accel Mag (g)');
 legend('Accel Mag','Accel X','Accel Y','Accel Z');
 title(contentsHIG(itFile));
 %%
-
 end
