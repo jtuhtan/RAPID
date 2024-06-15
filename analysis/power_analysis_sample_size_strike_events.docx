@@ -1,0 +1,53 @@
+/Power Analysis of Strike Event Proportions
+June 2024
+Assoc. Prof. Jeffrey A. Tuhtan, Dept. of Computer Systems, Tallinn University of Technology
+  
+  Why is a power analysis needed?
+
+  A pre-study (a priori) power analysis is needed in order to estimate the minimum sample size of passive sensors subjected to one or more treatments, relative to a control group where a treatment has not been applied. A strike event in this study is defined as a sensor having direct contact with the pump impeller during passage through the pump, where the sensor enters the pumping station inlet region under suction and exits after passing completely through the pump impeller region via the discharge nozzle.
+In the context of this study, a successful sensor passage must meet the following criteria:
+•	a sensor which is turned on in the test environment before submersion into the water, where the local atmospheric pressure of each sensor is then recorded for a minimum duration of 15 s,
+•	a sensor which after activation is manually injected into the test environment,
+•	and then enters the test environment which is operating at a known fixed operational condition, or is subject to a control environment without influence of the pump impeller,
+•	which after injection passes completely through the test environment in a continuous manner without abnormal interruption or delay,
+•	and which is recovered without reasonable expectation of damage by the injection and / or recovery apparati, such that the data collected can be considered to be representative of the test environment as the sensor is subjected to treatment and / or control conditions,
+•	a group is defined in this study as a collection of sensor datasets collected under identical experimental physical conditions (e.g. same injection location, operating point and recovery system).
+
+  How is the power analysis performed? 
+•	The null hypothesis (H0) in this study is that there is no difference in the proportion of strike events between two groups (e.g. between treatment and control groups).
+•	The alpha value is the level of significance with 5% chance (Type I error, false positive) that a difference between groups is detected, when there was actually no difference (α = 0.05)
+•	The statistical power of the study is taken as 0.85, which assumes a 15% chance (Type II error, false negative) that no difference between groups is detected, when there was actually a difference (β = 0.15).
+•	The effect size (h) is the difference in outcomes between two test groups where we assume: h = 0.2 for small effects, 0.5 for moderate effects and 0.8 for large effects.
+•	Power analysis is performed both before and after the tests are conducted. This is needed to estimate sample sizes prior to conducting the study, and afterwards to update the assumptions and improve sample size estimations in future studies.
+
+  How are the results of the power analysis reported?
+A power analysis to estimate the suitable sample sizes in this study was carried out using G*Power (V3.1.9.7), which compared an assumed baseline strike probabilities ps0 = 0.1 (10%) to 1.0 (100%) against a range of increasing strike probabilities ranging from 0.10 to 0.5 (10% to 50%) in increments of 0.1. For each combination, the effect size and sample sizes required to achieve a significance criterion of α = 0.05 and power of 0.85 is reported in Table 1. Sample sizes were estimated to be sufficient using an exact z-test of proportions with two-sided distribution. A two-sided distribution is needed as it cannot be assumed beforehand whether different treatment conditions (e.g. two different operating points of a pump) are likely to have lower or higher proportions of impeller strikes on sensors relative to the baseline strike probability. The effect sizes of the baseline strike proportions and test strike proportions are provided in Table 2.
+
+  Table 1: Sample size estimates (n) based on the difference in the proportion of impeller strikes for two groups. To use this table, first assume a baseline strike proportion (leftmost column), then select a test strike proportion (10% to 50%). The value in the table corresponding to this combination is reported as the required sample size, n for a two-sided z-test assuming equal sample sizes (e.g. the sample size, nbase for the assumed baseline strike proportion is equal to ntest. The coloring corresponds to the level of effort for conducting the tests where n ≤ 30 “easy”, 30 < n ≤ 60 “possible”, 60 < n ≤ 120 “difficult” and n > 120 “very difficult” are highlighted to assist in adaptive sampling strategies during testing.
+Assumed Baseline Strike Proportion	Test Strike Proportion
+	10%	20%	30%	40%	50%
+10%		228	72	36	22
+20%	228		335	93	44
+30%	71	335		407	106
+40%	36	93	407		443
+50%	22	44	106	443	
+60%	15	25	48	111	443
+70%	11	16	27	48	106
+80%	8	11	16	26	44
+90%	5	8	11	15	22
+100%	4	5	7	9	12
+
+  Table 2: Effect sizes calculated as the difference in proportions between the assumed baseline strike proportion and the test size strike proportions. The coloring corresponds to the effect sizes (h) where h < 0.2 is below detection, 0.2 ≤ h < 0.5 are small, 0.5 ≤ h <0.8 moderate and h ≥ 0.8 are large effects.
+             Assumed Baseline Strike Proportion	Test Strike Proportion Effect Sizes
+	10%	20%	30%	40%	50%
+10%		0.1	0.2	0.3	0.4
+20%	0.1		0.1	0.3	0.3
+30%	0.2	0.1		0.1	0.2
+40%	0.3	0.2	0.1		0.1
+50%	0.4	0.3	0.2	0.1	
+60%	0.5	0.4	0.3	0.2	0.1
+70%	0.6	0.5	0.4	0.3	0.2
+80%	0.7	0.6	0.5	0.4	0.3
+90%	0.8	0.7	0.6	0.5	0.4
+100%	0.9	0.8	0.7	0.6	0.5
+                                                                                                                                                                                                                                                                                                                                                                                                 
