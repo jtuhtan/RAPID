@@ -1,7 +1,7 @@
 % rapid_import_HIG_V3 - Read binary file from high-g digital accelerometer
-% Copyright 2024 Tallinn University of Technology
+% Copyright 2025 Tallinn University of Technology
 % Jeffrey A. Tuhtan jetuht@ttu.ee
-% Last updated: 2024.06.10
+% Last updated: 2025.03.06
 
 % Dependencies: sort_nat.m
 % https://www.mathworks.com/matlabcentral/fileexchange/10959-sort_nat-natural-order-sort
@@ -143,7 +143,7 @@ fprintf(fid,'%s\n',textHeader);
 fclose(fid);
 
 % Write HIG sensor data to CSV
-dlmwrite(exportFile,dataExportCSV,'-append');
+dlmwrite(exportFile,dataExportCSV,'-append','precision', '%.4f');
 %%
 
 %% STEP 5: Make a figure to display the HIG time series data for each axis and the accelerometer magnitude
