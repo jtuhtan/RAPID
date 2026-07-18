@@ -1,0 +1,21 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# conversion outputs (CSV/ and PLOTS/ folders are created next to data)
+CSV/
+PLOTS/
+MAT/
+PDF/
+
+# editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
