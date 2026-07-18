@@ -124,6 +124,13 @@ repository:
 * German Federal Ministry of Education and Research: RETERO — Reduction of
   live fish testing through science and technology (https://retero.org/)
 
+## License
+
+The entire repository — code, documentation and example data — is
+licensed under [CC BY-NC 4.0](LICENSE)
+(https://creativecommons.org/licenses/by-nc/4.0/): free to use, share
+and adapt for non-commercial purposes with attribution.
+
 ## Contact
 
 Jeffrey A. Tuhtan, Tallinn University of Technology — jeffrey.tuhtan@taltech.ee
